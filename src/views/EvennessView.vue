@@ -19,7 +19,7 @@
                 <div v-if="showResult" class="table-container" v-loading="loading" element-loading-text="检测中..."
                     element-loading-background="rgb(255,255,255)">
                     <p class="tips-item">可识别到的完整玻璃编号矩阵&nbsp;</p>
-                    <el-table :data="tableData" border :show-header="false" class="scaled-table">
+                    <el-table :data="tableData" border :show-header="false" class="scaled-table" >
                         <el-table-column v-for="(col, index) in cols" :key="index" align="center">
                             <template v-slot="scope">
                                 {{ scope.row[index] }}
@@ -174,6 +174,9 @@ const onCancel = () => {
 </script>
 
 <style scoped>
+.table-container {
+    width: 500px;
+}
 .page-title {
     font-size: 24px;
     /* 设置标题字体大小 */
@@ -205,14 +208,11 @@ const onCancel = () => {
 }
 
 .table-container {
-    display: flex;
-    /* 确保是 flex 容器 */
-    flex-direction: column;
-    /* 如果需要垂直居中，通常设置为 column，但这里你可能想要 row */
-    align-items: center;
-    /* 垂直居中 */
+    display: flex; /* 确保是 flex 容器 */  
+    flex-direction: column; 
+    align-items: center; /* 垂直居中 */  
     justify-content: center;
-    /* 水平居中（如果 flex-direction 是 row）*/
+    max-width: 400px; /* 设置一个适当的最大宽度 */
 
     /* 添加边框让他好看一点.. */
     border: 1px solid #4f636f;
